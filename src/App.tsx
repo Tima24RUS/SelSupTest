@@ -1,4 +1,5 @@
 import React, { type ChangeEvent } from "react";
+import "./ParamEditor.css";
 
 interface Param {
   id: number;
@@ -91,11 +92,53 @@ class ParamEditor extends React.Component<Props, State> {
 }
 
 const App: React.FC = () => {
+  const Params: Param[] = [
+    {
+      id: 1,
+      name: "Назначение",
+      type: 'string'
+    },
+    {
+      id: 2,
+      name: "Длина",
+      type: 'string'
+    },
+  ];
+
+  const Models: Model = {
+    paramValues: [
+      {
+        paramId: 1,
+        value: "Повседневное"
+      },
+      {
+        paramId: 2,
+        value: "Макси"
+      },
+    ],
+    colors: [
+      {
+        id: 1,
+        name: "Красный"
+      },
+      {
+        id: 2,
+        name: "Синий"
+      }
+    ]
+  };
+
   return (
     <div>
       <h1>Редактор параметров</h1>
+      <div className="ParamEditor">
+        <ParamEditor
+          params={Params}
+          model={Models}
+        />
+      </div>
     </div>
-  )
+  );
 };
 
 export default App;
